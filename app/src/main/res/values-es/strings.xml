@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VpnManager</string>
+    <string name="action_settings">Ajustes</string>
+    <string name="data_fragment_TCP_read">TCP/UDP bytes leídos</string>
+    <string name="data_fragment_TCP_write">TCP/UDP bytes escrítos</string>
+    <string name="data_fragment_TUN_read">TUN/TAP byes leídos</string>
+    <string name="data_fragment_TUN_write">TUN/TAP byes escrítos</string>
+    <string name="error_authentication">Error de autenticación, verificar tus datos de inicio de sessión</string>
+    <string name="error_date_parsing">Error al leer datos pero coneccion activa!</string>
+    <string name="error_route_host">No se puede encontrar el Host! Verifica to connecio Wi-FI</string>
+    <string name="error_unknown_error">Error desconocido, has estado jugando con las preferencias incorrectas</string>
+    <string name="prefs_client_title">Number de Cliente Vpn</string>
+    <string name="prefs_client_title_desc">Numore de cliente de Tomato, puede ser 1 o 2</string>
+    <string name="prefs_client_title_key"></string>
+    <string name="prefs_host_title"></string>
+    <string name="prefs_host_title_desc">Escriba la IP de su router TomatoUSB</string>
+    <string name="prefs_passwd_title">Contraseña</string>
+    <string name="prefs_passwd_title_desc">Escriba la contraseña del administrador del router</string>
+    <string name="prefs_username_title">Usuario</string>
+    <string name="prefs_username_title_desc">Escriba el usuario administrador del router</string>
+    <string name="refresh">Actualizar</string>
+    <string name="settings">Ajustes</string>
+</resources>
