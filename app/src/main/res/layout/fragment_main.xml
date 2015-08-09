@@ -1,0 +1,21 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" tools:context="me.vpineda.vpnmanager.ui.MainFragment"
+    android:orientation="vertical">
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:id="@+id/button_fragment"
+        class="me.vpineda.vpnmanager.ui.MainFragment$ButtonFragment"
+        tools:layout="@layout/fragment_button"
+        android:layout_weight="1"/>
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:id="@+id/data_fragment"
+        class="me.vpineda.vpnmanager.ui.MainFragment$DataFragment"
+        tools:layout="@layout/fragment_data"
+        android:layout_weight="0" />
+
+</LinearLayout>

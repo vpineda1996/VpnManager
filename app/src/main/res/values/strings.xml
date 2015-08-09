@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">VpnManager</string>
+    <string name="settings">Settings</string>
+    <string name="refresh">Refresh</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="error_authentication">Authentication error, double check your Credentials</string>
+    <string name="error_route_host">Can\'t find host! Check your Wi-Fi connection</string>
+    <string name="error_date_parsing">Couldn\'t read data but active!</string>
+    <string name="error_unknown_error">Unknown error, you\'ve played with the wrong settings my dear.</string>
+
+    <string name="data_fragment_TCP_read">TCP/UDP read bytes</string>
+    <string name="data_fragment_TCP_write">TCP/UDP write bytes</string>
+    <string name="data_fragment_TUN_read">TUN/TAP read bytes</string>
+    <string name="data_fragment_TUN_write">TUN/TAP write bytes</string>
+
+    <string name="prefs_host_title">Host</string>
+    <string name="prefs_host_title_desc">Input Tomato\'s IP</string>
+    <string name="prefs_host_title_key">prefs_host</string>
+
+    <string name="prefs_username_title">Username</string>
+    <string name="prefs_username_title_desc">Input Tomato admin\'s username</string>
+    <string name="prefs_username_title_key">prefs_user</string>
+
+    <string name="prefs_passwd_title">Password</string>
+    <string name="prefs_passwd_title_desc">Input Tomato admin\'s password</string>
+    <string name="prefs_passwd_title_key">prefs_passwd</string>
+
+    <string name="prefs_client_title">Vpn Client Number</string>
+    <string name="prefs_client_title_desc">Tomato client number, can be 1 or 2</string>
+    <string name="prefs_client_title_key">prefs_client_no</string>
+</resources>

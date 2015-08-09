@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_material_dark">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+            <TableRow
+                android:padding="@dimen/activity_horizontal_margin"
+                android:layout_gravity="left">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/data_fragment_TCP_read"
+                        android:textStyle="bold"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="@dimen/activity_horizontal_margin"
+                        android:textColor="@android:color/white"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:id="@+id/data_fragment_TCP_read"
+                    android:textColor="@android:color/white"/>
+            </TableRow>
+            <TableRow
+                android:padding="@dimen/activity_horizontal_margin"
+                android:layout_gravity="left">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/data_fragment_TCP_write"
+                        android:textStyle="bold"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="@dimen/activity_horizontal_margin"
+                        android:textColor="@android:color/white"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:id="@+id/data_fragment_TCP_write"
+                    android:textColor="@android:color/white"/>
+            </TableRow>
+            <TableRow
+                android:padding="@dimen/activity_horizontal_margin"
+                android:layout_gravity="left">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/data_fragment_TUN_read"
+                        android:textStyle="bold"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="@dimen/activity_horizontal_margin"
+                        android:textColor="@android:color/white"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:id="@+id/data_fragment_TUN_read"
+                    android:textColor="@android:color/white"/>
+            </TableRow>
+            <TableRow
+                android:padding="@dimen/activity_horizontal_margin"
+                android:layout_gravity="left">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/data_fragment_TUN_write"
+                        android:id="@+id/textView7"
+                        android:textStyle="bold"
+                        android:layout_alignParentLeft="false"
+                        android:layout_alignParentRight="true"
+                        android:paddingRight="@dimen/activity_horizontal_margin"
+                        android:textColor="@android:color/white"/>
+                </RelativeLayout>
+
+                <TextView
+                    android:layout_width="0px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:id="@+id/data_fragment_TUN_write"
+                    android:textColor="@android:color/white"/>
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="Connection Preferences">
+        <EditTextPreference
+            android:title="@string/prefs_host_title"
+            android:key="@string/prefs_host_title_key"
+            android:summary="@string/prefs_host_title_desc"
+            android:defaultValue="192.168.1.1"/>
+
+        <EditTextPreference
+            android:title="@string/prefs_username_title"
+            android:key="@string/prefs_username_title_key"
+            android:summary="@string/prefs_username_title_desc"
+            android:defaultValue="admin"/>
+
+        <EditTextPreference
+            android:title="@string/prefs_passwd_title"
+            android:key="@string/prefs_passwd_title_key"
+            android:summary="@string/prefs_passwd_title_desc"
+            android:defaultValue="admin"/>
+
+        <ListPreference
+            android:title="@string/prefs_client_title"
+            android:key="@string/prefs_client_title_key"
+            android:summary="@string/prefs_client_title_desc"
+            android:entries="@array/clientNumbers"
+            android:entryValues="@array/clientNumbers"
+            android:defaultValue="1"/>
+    </PreferenceCategory>
+</PreferenceScreen>
