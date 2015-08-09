@@ -1,19 +1,13 @@
 package me.vpineda.vpnmanager.ui;
 
-import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -391,7 +385,15 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    private class CheckStatusAsyncTask extends AsyncTask<Void,Void,VpnState>{
+    private class CheckStatusAsyncTask extends AsyncTask<Void,Void,CheckStatusAsyncTask.Result>{
+
+        /**
+         * Once more, this is why structs should exist in Java
+         */
+        public class Result {
+            int result = -1 ;
+            VpnState vpnState = null;
+        }
 
         /**
          * This guy will only query and update the view depending on the status that we get from
@@ -399,23 +401,38 @@ public class MainFragment extends Fragment implements View.OnClickListener{
          * @return the vpnState that will update the view
          */
         @Override
-        protected VpnState doInBackground(Void... params) {
+        protected Result doInBackground(Void... params) {
+            Result result = new Result();
             try {
-                return vpnManager.state();
-            } catch (IOException|ParseException e) {
+                result.vpnState = vpnManager.state();
+                result.result = result.vpnState.enabled ? 1 : 0;
+                return result;
+            } catch (FileNotFoundException e) {
                 e.printStackTrace();
+                result.result = 2;
+                return result;
+            } catch (ConnectException e) {
+                e.printStackTrace();
+                result.result = 3;
+                return result;
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (ParseException e) {
+                e.printStackTrace();
+                result.result = 4;
+                return result;
             }
             return null;
         }
 
         @Override
-        protected void onPostExecute(VpnState vpnState) {
+        protected void onPostExecute(Result vpnState) {
             super.onPostExecute(vpnState);
-            if(vpnState == null)
-                updateView(-1);
+            if(vpnState.vpnState == null)
+                updateView(vpnState.result);
             else if(isVisible()){
-                buttonFragment.changeLayout(vpnState.enabled ? 1 : 0);
-                dataFragment.changeLayout(vpnState);
+                buttonFragment.changeLayout(vpnState.result);
+                dataFragment.changeLayout(vpnState.vpnState);
             }
 
         }
