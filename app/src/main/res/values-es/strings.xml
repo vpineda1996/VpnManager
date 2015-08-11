@@ -12,8 +12,6 @@
     <string name="error_unknown_error">Error desconocido, has estado jugando con las preferencias incorrectas</string>
     <string name="prefs_client_title">Number de Cliente Vpn</string>
     <string name="prefs_client_title_desc">Numore de cliente de Tomato, puede ser 1 o 2</string>
-    <string name="prefs_client_title_key"></string>
-    <string name="prefs_host_title"></string>
     <string name="prefs_host_title_desc">Escriba la IP de su router TomatoUSB</string>
     <string name="prefs_passwd_title">Contraseña</string>
     <string name="prefs_passwd_title_desc">Escriba la contraseña del administrador del router</string>

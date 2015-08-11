@@ -150,7 +150,7 @@ public class MainFragment extends Fragment implements View.OnClickListener{
             case 4:
                 Toast.makeText(getActivity(),getResources().getText(R.string.error_date_parsing),Toast.LENGTH_LONG)
                         .show();
-                result = 0;
+                result = 1;
                 break;
             // Unknown error
             case -1:
@@ -322,15 +322,16 @@ public class MainFragment extends Fragment implements View.OnClickListener{
     //
     //
 
-    private class ChangeStatusAsyncTask extends AsyncTask<VpnManager,Void,ChangeStatusAsyncTask.Result>{
+    /**
+     * Once more, this is why structs should exist in Java
+     */
+    public class Result {
+        int result = -1 ;
+        VpnState vpnState = null;
+    }
 
-        /**
-         * Once more, this is why structs should exist in Java
-         */
-        public class Result {
-            int result = -1 ;
-            VpnState vpnState = null;
-        }
+    private class ChangeStatusAsyncTask extends AsyncTask<VpnManager,Void,Result>{
+
         /**
          * Sends data to server
          * @param params the vpnmanager that will be used
@@ -355,22 +356,9 @@ public class MainFragment extends Fragment implements View.OnClickListener{
                 res.vpnState = vpnMngr.state();
                 res.result = res.vpnState.enabled ? 1 : 0;
                 return res;
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                res.result = 2;
-                return res;
-            } catch (ConnectException e) {
-                e.printStackTrace();
-                res.result = 3;
-                return res;
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ParseException e) {
-                e.printStackTrace();
-                res.result = 4;
-                return res;
+            } catch (IOException|ParseException e){
+                return handleException(e,res);
             }
-            return res;
         }
 
         /**
@@ -385,15 +373,7 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         }
     }
 
-    private class CheckStatusAsyncTask extends AsyncTask<Void,Void,CheckStatusAsyncTask.Result>{
-
-        /**
-         * Once more, this is why structs should exist in Java
-         */
-        public class Result {
-            int result = -1 ;
-            VpnState vpnState = null;
-        }
+    private class CheckStatusAsyncTask extends AsyncTask<Void,Void,Result>{
 
         /**
          * This guy will only query and update the view depending on the status that we get from
@@ -407,22 +387,9 @@ public class MainFragment extends Fragment implements View.OnClickListener{
                 result.vpnState = vpnManager.state();
                 result.result = result.vpnState.enabled ? 1 : 0;
                 return result;
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-                result.result = 2;
-                return result;
-            } catch (ConnectException e) {
-                e.printStackTrace();
-                result.result = 3;
-                return result;
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ParseException e) {
-                e.printStackTrace();
-                result.result = 4;
-                return result;
+            } catch (IOException|ParseException e) {
+                return handleException(e, result);
             }
-            return null;
         }
 
         @Override
@@ -436,6 +403,30 @@ public class MainFragment extends Fragment implements View.OnClickListener{
             }
 
         }
+    }
+
+    /**
+     * Handles exceptions from MainFragment
+     * @param e error to handle
+     * @param result result from http request {@link me.vpineda.vpnmanager.ui.MainFragment.Result}
+     * @return
+     */
+    private Result handleException(Exception e, Result result){
+        // Fist print the stacktrace just for debugging and then update the result
+        e.printStackTrace();
+        if(e instanceof FileNotFoundException){
+            result.result = 2;
+            return result;
+        }else if (e instanceof ConnectException){
+            result.result = 3;
+            return result;
+        }else if(e instanceof IOException){
+            result.result = -1;
+            return result;
+        }else if(e instanceof ParseException){
+            result.result = 4;
+            return result;
+        }else throw new RuntimeException("Not a valid exception" + e.toString());
     }
 
 }

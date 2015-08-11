@@ -45,8 +45,15 @@ public class VpnState {
         // Be careful awesome switches ahead!!!
         switch (i.charAt(0)){
             case 'U':
-                DateFormat dateFormat = new SimpleDateFormat("EEE MMM  d HH:mm:ss yyyy", Locale.ENGLISH);
-                updateDate = dateFormat.parse(i.substring(i.indexOf(",")+ 1));
+                try {
+                    DateFormat dateFormat = new SimpleDateFormat("EEE MMM d HH:mm:ss yyyy", Locale.ENGLISH);
+                    updateDate = dateFormat.parse(i.substring(i.indexOf(",") + 1));
+                }catch (ParseException e){
+                    // For some weird reason some days have two spaces between the day and the month
+                    // A bug for Tomato, I suppose
+                    DateFormat dateFormat = new SimpleDateFormat("EEE MMM  d HH:mm:ss yyyy", Locale.ENGLISH);
+                    updateDate = dateFormat.parse(i.substring(i.indexOf(",") + 1));
+                }
                 enabled = true;
                 break;
             case 'T':
